@@ -1,4 +1,4 @@
-package internal
+package usecase
 
 type ContactUseCase interface {
 	CreateContact() error

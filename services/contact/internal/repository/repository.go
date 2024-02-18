@@ -1,4 +1,4 @@
-package internal
+package repository
 
 type ContactRepository interface {
 	CreateContact() error
@@ -17,6 +17,5 @@ type Repository struct {
 }
 
 func NewRepository() *Repository {
-
 	return &Repository{}
 }

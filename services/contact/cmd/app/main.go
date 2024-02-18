@@ -2,9 +2,13 @@ package main
 
 import (
 	"architecture_go/pkg/store/postgres"
+	"architecture_go/services/contact/internal/delivery"
+	"architecture_go/services/contact/internal/repository"
+	"architecture_go/services/contact/internal/usecase"
 	"fmt"
 	_ "github.com/lib/pq"
 	"log"
+	"net/http"
 )
 
 func main() {
@@ -22,4 +26,29 @@ func main() {
 	defer db.Close()
 
 	fmt.Println("Connected to the database!")
+
+	contactRepo := repository.NewRepository()
+	contactUC := usecase.NewUseCase()
+	contactHandler := delivery.NewDelivery()
+
+	fmt.Println(contactRepo)
+	fmt.Println(contactUC)
+	fmt.Println(contactHandler)
+
+	startServer(contactHandler)
+
+	// Start your server, passing in the handler
+	startServer(contactHandler)
+
+}
+
+func startServer(handler *delivery.Delivery) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello, World!"))
+	})
+
+	log.Println("Server listening on port 8080...")
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatal(err)
+	}
 }
