@@ -28,7 +28,7 @@ func main() {
 	fmt.Println("Connected to the database!")
 
 	contactRepo := repository.NewRepository()
-	contactUC := usecase.NewUseCase()
+	contactUC := usecase.NewContactUseCase()
 	contactHandler := delivery.NewDelivery()
 
 	fmt.Println(contactRepo)
