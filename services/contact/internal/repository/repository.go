@@ -1,4 +1,4 @@
-package repository
+package internal
 
 type ContactRepository interface {
 	CreateContact() error
@@ -11,4 +11,12 @@ type GroupRepository interface {
 	CreateGroup() error
 	ReadGroup() error
 	AddContactToGroup() error
+}
+
+type Repository struct {
+}
+
+func NewRepository() *Repository {
+
+	return &Repository{}
 }

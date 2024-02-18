@@ -1,4 +1,4 @@
-package useсase
+package internal
 
 type ContactUseCase interface {
 	CreateContact() error
@@ -11,4 +11,12 @@ type GroupUseCase interface {
 	CreateGroup() error
 	ReadGroup() error
 	AddContactToGroup() error
+}
+
+type UseCase struct {
+}
+
+func NewUseCase() *UseCase {
+
+	return &UseCase{}
 }
